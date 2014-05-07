@@ -35,7 +35,7 @@
 #endif
 #ifdef USE_SELECT_HANDLER
 #include <sys/time.h>
-#define MAX_SELECT_FDS	1024
+#define MAX_SELECT_FDS	16384		/* was 1024 */
 #endif
 
 /* Generics flags */

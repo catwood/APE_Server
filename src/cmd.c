@@ -26,6 +26,7 @@
 #include "proxy.h"
 #include "raw.h"
 #include "transports.h"
+#include "log.h"
 
 void do_register(acetables *g_ape)
 {
@@ -585,6 +586,8 @@ unsigned int cmd_left(callbackp *callbacki)
 	if ((chan_name = JSTR(channel)) != NULL) {
 	
 		if ((chan = getchan(chan_name, callbacki->g_ape)) == NULL) {
+			ape_log(APE_INFO, __FILE__, __LINE__, callbacki->g_ape, 
+				"cmd_left: Cannot find channel \"%s\"", chan_name);
 			send_error(callbacki->call_user, "UNKNOWN_CHANNEL", "103", callbacki->g_ape);
 		
 		} else if (!isonchannel(callbacki->call_user, chan)) {

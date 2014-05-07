@@ -3227,7 +3227,7 @@ static void init_module(acetables *g_ape) // Called when module is loaded
 	ape_sm_runtime *asr;
 	jsval rval;
 
-	rt = JS_NewRuntime(8L * 1024L * 1024L);
+	rt = JS_NewRuntime(256L * 1024L * 1024L);
 	
 	if (rt == NULL) {
 		printf("[ERR] Not enough memory\n");

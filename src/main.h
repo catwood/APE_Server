@@ -45,7 +45,7 @@
 #define TIMEOUT_SEC 45
 
 #define SERVER_NAME "APE.Server"
-#define _VERSION "1.1.3-DEV-TeleTech"
+#define _VERSION "1.1.4-DEV-TeleTech"
 
 int server_is_running;
 

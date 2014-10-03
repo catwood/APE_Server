@@ -5485,7 +5485,7 @@ static void init_module(acetables *g_ape) // Called when module is loaded
 	ape_sm_runtime *asr;
 	jsval rval;
 
-	rt = JS_NewRuntime(256L * 1024L * 1024L);
+	rt = JS_NewRuntime(0x7FFFF000L /* 2L * 1024L * 1024L * 1024L */);
 	
 	if (rt == NULL) {
 		if (!g_ape->is_daemon) {

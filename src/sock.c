@@ -163,10 +163,10 @@ static void ape_connect_name_cb(char *ip, void *data, acetables *g_ape)
 
 	if (ip != NULL) {
 		if ((sock = ape_connect(ip, asca->port, g_ape)) != NULL) {
-
+		
 			sock->attach = asca->sock->attach;
-
-			sock->callbacks.on_accept = asca->sock->callbacks.on_accept;
+		
+			sock->callbacks.on_accept = asca->sock->callbacks.on_accept;         	
 			sock->callbacks.on_connect = asca->sock->callbacks.on_connect;
 			sock->callbacks.on_disconnect = asca->sock->callbacks.on_disconnect;
 			sock->callbacks.on_read = asca->sock->callbacks.on_read;
@@ -174,7 +174,14 @@ static void ape_connect_name_cb(char *ip, void *data, acetables *g_ape)
 			sock->callbacks.on_data_completly_sent = asca->sock->callbacks.on_data_completly_sent;
 			sock->callbacks.on_write = asca->sock->callbacks.on_write;
 		}
+	
 		free(ip);
+	} else {
+		
+		if (!g_ape->is_daemon) {
+			printf("sockClient : No IP found / Invalid Hostname\n");
+		}
+		ape_log(APE_ERR, __FILE__, __LINE__, g_ape, "sockClient : No IP found / Invalid Hostname");
 	}
 	free(asca->sock);
 	free(asca);
